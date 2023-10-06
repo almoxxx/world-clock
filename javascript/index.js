@@ -66,3 +66,14 @@ function updateCity(event) {
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
+
+//create an array with all the timezones from moment
+let TimeZoneList = moment.tz.names();
+
+//for each element of the array TimeZoneList, create an option
+TimeZoneList.forEach(function (element) {
+  let optionElement = document.createElement("option");
+  optionElement.innerHTML = element;
+  optionElement.value = element;
+  citiesSelectElement.appendChild(optionElement);
+});
