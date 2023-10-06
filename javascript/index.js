@@ -33,6 +33,24 @@ function updateTime() {
     "HH:mm:ss [<small>]A[</small>]"
   );
 }
-
+//update the time every second
 updateTime();
 setInterval(updateTime, 1000);
+
+//update the city
+function updateCity(event) {
+  let cityTimezone = event.target.value;
+  let cityTime = moment().tz(cityTimezone);
+  let selectedCityElement = document.querySelector("#selectedCity");
+  selectedCityElement.innerHTML = `<div>
+          <h2>${cityTimezone}</h2>
+          <div class="date">${cityTime.format("MMMM, Do YYYY")}</div>
+        </div>
+        <div class="time">${cityTime.format(
+          "HH:mm:ss [<small>]A[</small>]"
+        )}</div>
+      </div>`;
+}
+
+let citiesSelectElement = document.querySelector("#city");
+citiesSelectElement.addEventListener("change", updateCity);
