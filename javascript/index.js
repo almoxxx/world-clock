@@ -38,14 +38,17 @@ updateTime();
 setInterval(updateTime, 1000);
 
 //update the city
+let cityTimezone = null;
+let cityName = null;
+
 function updateCity(event) {
-  let cityTimezone = event.target.value;
+  cityTimezone = event.target.value;
 
   if (cityTimezone === "current") {
     cityTimezone = moment.tz.guess();
   }
 
-  let cityName = cityTimezone.replace("_", " ").split("/")[1];
+  cityName = cityTimezone.replace("_", " ").split("/")[1];
   let selectedCityElement = document.querySelector("#selectedCity");
 
   function updateTimeForSelectedCity() {
